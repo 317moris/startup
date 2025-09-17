@@ -3,3 +3,6 @@ $packages = "Microsoft.PowerShell", "Git.Git", "Mozilla.Firefox.ja", "Volta.Volt
 for ($i = 0; $i -lt $packages.Count; $i++) {
     & winget install $packages[$i]
 }
+
+& "volta install node@latest"
+& "irm bun.sh/install.ps1 | iex"
