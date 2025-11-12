@@ -16,6 +16,12 @@ for ($i = 0; $i -lt $packages.Count; $i++) {
     winget install $packages[$i]
 }
 
-Start-Process -FilePath "C:\Program Files\Git\cmd\git.exe" -ArgumentList "clone https://github.com/317moris/ksg-website.git ${devDriveLetter}:\ksg-website"
 Invoke-RestMethod bun.sh/install.ps1 | Invoke-Expression
-Start-Process -FilePath "C:\Program Files\starship\bin\starship.exe" -ArgumentList "preset bracketed-segments -o ${env:USERPROFILE}\.config\starship.toml"
+
+& "C:\Program Files\starship\bin\starship.exe" preset bracketed-segments -o "${env:USERPROFILE}\.config\starship.toml"
+
+$git = "C:\Program Files\Git\cmd\git.exe"
+& $git clone https://github.com/317moris/ksg-website.git "${devDriveLetter}:\ksg-website"
+& $git fetch
+& $git checkout dev
+& "C:\Users\js202332\.bun\bin\bun.exe" update --latest
