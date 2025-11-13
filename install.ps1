@@ -11,9 +11,10 @@ New-Item -Path "${env:USERPROFILE}\" -Name ".config" -ItemType "Directory"
 Copy-Item -Path "${networkAppData}\Mozilla\" -Destination "${env:APPDATA}\" -Recurse
 Copy-Item -Path "${networkDriveLetter}:\Microsoft.PowerShell_profile.ps1" -Destination "${env:USERPROFILE}\Documents\"
 Remove-Item -Path "${env:USERPROFILE}\.vscode\" -Force -Recurse
-Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\" -Recurse
-Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurse
-Remove-Item -Path "${env:LOCALAPPDATA}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\*" -Recurse -Force
+Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\" -Recurse -Force
+Remove-Item -Path "${env:APPDATA}\Code\" -Force -Recurse
+Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurse -Force
+Remove-Item -Path "${env:LOCALAPPDATA}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Recurse -Force
 Copy-Item -Path "${networkLocalAppData}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Destination "${env:LOCALAPPDATA}\Packages\" -Recurse -Force
 
 Copy-Item -Path "${networkDriveLetter}:\fonts\*" -Destination "${env:LOCALAPPDATA}\Microsoft\Windows\Fonts\"
