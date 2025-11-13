@@ -1,5 +1,6 @@
 $networkDriveLetter = "Z"
 $networkAppData = "${networkDriveLetter}:\AppData\Roaming"
+$networkLocalAppData = "${networkDriveLetter}:\AppData\Local"
 
 Remove-Item -Path "${networkAppData}\*" -Force -Recurse
 Remove-Item -Path "${networkDriveLetter}:\Microsoft.PowerShell_profile.ps1"
