@@ -2,6 +2,7 @@ $packages = "MacType.MacType", "Mozilla.Firefox.ja", "Microsoft.PowerShell", "Gi
 $upgrades = "Microsoft.VisualStudioCode", "Microsoft.VisualStudioCode"
 $networkDriveLetter = "Z"
 $devDriveLetter = "E"
+$networkLocalAppData = "${networkDriveLetter}:\AppData\Local"
 $networkAppData = "${networkDriveLetter}:\AppData\Roaming"
 
 New-Item -Path "${env:USERPROFILE}\Documents\" -Name "PowerShell" -ItemType "Directory" 
@@ -12,6 +13,8 @@ Copy-Item -Path "${networkDriveLetter}:\Microsoft.PowerShell_profile.ps1" -Desti
 Remove-Item -Path "${env:USERPROFILE}\.vscode\" -Force -Recurse
 Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\" -Recurse
 Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurse
+Remove-Item -Path "${env:LOCALAPPDATA}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\*" -Recurse -Force
+Copy-Item -Path "${networkLocalAppData}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Destination "${env:LOCALAPPDATA}\Packages\" -Recurse -Force
 
 Copy-Item -Path "${networkDriveLetter}:\fonts\*" -Destination "${env:LOCALAPPDATA}\Microsoft\Windows\Fonts\"
 
