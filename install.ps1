@@ -1,4 +1,5 @@
 $packages = "MacType.MacType", "Mozilla.Firefox.ja", "Microsoft.PowerShell", "Git.Git", "nodejs", "Starship.Starship", "Google.JapaneseIME"
+$upgrades = "Microsoft.VisualStudioCode", "Microsoft.VisualStudioCode"
 $networkDriveLetter = "Z"
 $devDriveLetter = "E"
 $networkAppData = "${networkDriveLetter}:\AppData\Roaming"
@@ -12,8 +13,14 @@ Remove-Item -Path "${env:USERPROFILE}\.vscode\" -Force -Recurse
 Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\" -Recurse
 Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurse
 
+Copy-Item -Path "${networkDriveLetter}:\fonts\*" -Destination "${env:LOCALAPPDATA}\Microsoft\Windows\Fonts\"
+
 for ($i = 0; $i -lt $packages.Count; $i++) {
     winget install $packages[$i]
+}
+
+for ($i = 0; $i -lt $upgrades.Count; $i++) {
+    winget upgrade ${upgrades}[$i]
 }
 
 Invoke-RestMethod bun.sh/install.ps1 | Invoke-Expression
