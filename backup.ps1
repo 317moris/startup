@@ -5,7 +5,7 @@ $networkLocalAppData = "${networkDriveLetter}:\AppData\Local"
 Remove-Item -Path "${networkAppData}\*" -Force -Recurse
 Remove-Item -Path "${networkDriveLetter}:\Microsoft.PowerShell_profile.ps1"
 Remove-Item -Path "${networkDriveLetter}:\.vscode\" -Force -Recurse
-Remove-Item -Path "${networkLocalAppData}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Recurse -Force
+Remove-Item -Path "${networkLocalAppData}\*" -Recurse -Force
 
 Copy-Item -Path "${env:APPDATA}\Mozilla\" -Destination "${networkAppData}\" -Recurse
 Copy-Item -Path $PROFILE -Destination "${networkDriveLetter}:\"
