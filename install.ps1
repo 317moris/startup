@@ -8,8 +8,8 @@ New-Item -Path "${env:USERPROFILE}\" -Name ".config" -ItemType "Directory"
 
 Copy-Item -Path "${networkAppData}\Mozilla\" -Destination "${env:APPDATA}\" -Recurse
 Copy-Item -Path "${networkDriveLetter}:\Microsoft.PowerShell_profile.ps1" -Destination "${env:USERPROFILE}\Documents\"
-Remove-Item -Path "${env:USERPROFILE}\.vscode\" -Force
-Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\"
+Remove-Item -Path "${env:USERPROFILE}\.vscode\" -Force -Recurse
+Copy-Item -Path "${networkDriveLetter}:\.vscode\" -Destination "${env:USERPROFILE}\" -Recurse
 Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurse
 
 for ($i = 0; $i -lt $packages.Count; $i++) {
@@ -22,6 +22,7 @@ Invoke-RestMethod bun.sh/install.ps1 | Invoke-Expression
 
 $git = "C:\Program Files\Git\cmd\git.exe"
 & $git clone https://github.com/317moris/ksg-website.git "${devDriveLetter}:\ksg-website"
+Set-Location "${devDriveLetter}:\ksg-website\"
 & $git fetch
 & $git checkout dev
-& "C:\Users\js202332\.bun\bin\bun.exe" update --latest
+& "${env:USERPROFILE}\.bun\bin\bun.exe" update --latest
