@@ -17,7 +17,7 @@ Copy-Item -Path "${networkAppData}\Code\" -Destination "${env:APPDATA}\" -Recurs
 Remove-Item -Path "${env:LOCALAPPDATA}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Recurse -Force
 Copy-Item -Path "${networkLocalAppData}\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\" -Destination "${env:LOCALAPPDATA}\Packages\" -Recurse -Force
 
-Copy-Item -Path "${networkDriveLetter}:\fonts\*" -Destination "${env:LOCALAPPDATA}\Microsoft\Windows\Fonts\"
+# Copy-Item -Path "${networkDriveLetter}:\fonts\*" -Destination "${env:LOCALAPPDATA}\Microsoft\Windows\Fonts\"
 
 for ($i = 0; $i -lt $packages.Count; $i++) {
     winget install $packages[$i]
