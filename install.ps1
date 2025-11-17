@@ -37,3 +37,4 @@ Set-Location "${devDriveLetter}:\ksg-website\"
 & $git fetch
 & $git checkout dev
 & "${env:USERPROFILE}\.bun\bin\bun.exe" update --latest
+code .
